@@ -16,8 +16,6 @@ def max_in_list(numbers, n=2):
   while i < len(numbers)-1:
     number = numbers[i]
 
-    print j, i, number, numbers, offset
-
     if i != 0 and number >= numbers[0]:
       # send number to the start of the list 
       # if it is bigger than the first number in the list
@@ -25,22 +23,22 @@ def max_in_list(numbers, n=2):
       numbers.insert(0, number) 
       i += 1
     elif number <= numbers[-1] and i != len(numbers) - 2:
+      # move number to the end of the list
+      # if it's smaller than the last item in the list
       numbers.pop(i)
       numbers.append(number)
     elif i != 0 and number > numbers[i-1]:
+      # move number closer to the beginning of the list
+      # if it's bigger than the previous one
       numbers.pop(i)
       numbers.insert(i-1, number) 
       i -= 1
       offset += 1
     else:
-      #numbers.pop(i)
-      #numbers.insert(1, number) 
+      # move to the next position in list
+      # if no actions were done
       i += 1 + offset
       offset = 0
-
-    print j, i, number, numbers, offset
-
-    j += 1
 
   return numbers[:n]
 
